@@ -74,6 +74,70 @@
           }
         }
       }
+    }, 
+    "categories/import": {
+      "post": {
+        "tags": ["Category"],
+        "summary": "Upload new category",
+        "description": "Upload a new category",
+        "requestBody": {
+          "content": {
+            "multpart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              }
+            }
+          }
+        }, 
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
+      }
+    },
+    "/specifications": {
+      "post": {
+        "tags": ["Specifications"],
+        "summary": "Create specification",
+        "description": "Create a new Specification",
+        "requestBody": {
+          "content":{
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/Specification"
+              }
+            }
+          }
+        }, 
+        "responses": {
+          "201": {
+            "description": "Created"
+          }, 
+          "500": {
+            "description": "Specifications already exists!"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Specification": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
     }
   }
 }
